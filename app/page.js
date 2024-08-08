@@ -38,10 +38,13 @@ const updateInventory = async () => {
   const docs = await getDocs(snapshot)
   const inventoryList = []
   docs.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data())
     inventoryList.push({ name: doc.id, ...doc.data() })
   })
   setInventory(inventoryList)
+  console.log("Updated inventory: ", inventoryList)
 }
+
 
 useEffect(() => {
   updateInventory()
